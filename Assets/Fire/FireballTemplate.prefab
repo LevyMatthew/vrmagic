@@ -226,6 +226,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1428410554714769865}
     m_Modifications:
+    - target: {fileID: 4963323878949692945, guid: 85a5f3efd2c768e439b96a0f54c6352d,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4963461409402074663, guid: 85a5f3efd2c768e439b96a0f54c6352d,
         type: 3}
       propertyPath: ShapeModule.type
