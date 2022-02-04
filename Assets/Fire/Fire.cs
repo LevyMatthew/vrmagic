@@ -6,7 +6,7 @@ public class Fire : MonoBehaviour
 {    
     [SerializeField] public float destroyTime = 15f;
 
-    protected Rigidbody target;
+    protected Transform target;
     protected Rigidbody rb;
 
     public virtual void Start()
@@ -28,7 +28,7 @@ public class Fire : MonoBehaviour
         }
     }
 
-    public virtual void Spawn(Rigidbody origin)
+    public virtual void Spawn(Transform origin)
     {
         this.target = origin;
         rb.velocity = Vector3.zero;
@@ -41,6 +41,7 @@ public class Fire : MonoBehaviour
     public virtual void Hold()
     {
         rb.rotation = target.rotation;
+        rb.position = target.position;
     }
 
     public virtual void Release(Vector3 velocity)

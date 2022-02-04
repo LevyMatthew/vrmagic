@@ -7,7 +7,7 @@ namespace Valve.VR.Extras
     public class FlameThrower : MonoBehaviour
     {
         [SerializeField] public GameObject firePrefab;
-        [SerializeField] public Rigidbody attachmentPoint;
+        [SerializeField] public Transform attachmentPoint;
 
         public SteamVR_Action_Boolean spawn = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("InteractUI");
 
@@ -29,7 +29,7 @@ namespace Valve.VR.Extras
         {
             if (fireInstance == null && spawn.GetStateDown(behaviourPose.inputSource))
             {
-                fireInstance = GameObject.Instantiate(firePrefab, transform.position, Quaternion.identity, null);
+                fireInstance = GameObject.Instantiate(firePrefab, transform.position, transform.rotation, null);
                 Fire fire = fireInstance.GetComponent<Fire>();
                 if (fire != null)
                     fire.Spawn(attachmentPoint);
