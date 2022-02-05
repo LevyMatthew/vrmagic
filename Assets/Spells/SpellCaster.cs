@@ -53,7 +53,7 @@ namespace Valve.VR.Extras
                 {
                     Transform target = transform;
                     if (sac.attachmentPoint == AttachmentPoint.ObjectHold)
-                        target = objectHoldPoint;
+                        target = objectHoldPoint;                        
                     else if (sac.attachmentPoint == AttachmentPoint.IndexFingerTip)
                         target = indexFingerTipPoint;
 
