@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.Extras;
 
 public class Spell : MonoBehaviour
 {
@@ -8,16 +9,13 @@ public class Spell : MonoBehaviour
     [SerializeField] public float destroyTime = 15f;
 
     protected Transform target;
-    protected Rigidbody rb;
 
     public virtual void Start()
     {
-
     }
 
     public virtual void Awake()
     {
-        rb = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
@@ -28,18 +26,15 @@ public class Spell : MonoBehaviour
         }
     }
 
-    public virtual void Grab(Transform origin)
+    public virtual void Grab(Transform target)
     {
-        this.target = origin;
-        rb.useGravity = false;
-        rb.isKinematic = true;
-        Hold();
+        this.target = target;
+        transform.position = target.position;
+        transform.rotation = target.rotation;
     }
 
     public virtual void Hold()
     {
-        rb.rotation = target.rotation;
-        rb.position = target.position;
     }
 
     public virtual void Release(Vector3 velocity)
