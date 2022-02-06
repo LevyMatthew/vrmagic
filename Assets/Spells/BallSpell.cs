@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR.Extras;
 
-public class Fireball : Spell
+public class BallSpell : Spell
 {
     public float velocityMultiplier = 10f;
     protected Rigidbody rb;

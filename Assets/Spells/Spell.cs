@@ -8,6 +8,14 @@ public class Spell : MonoBehaviour
     [SerializeField] public List<Element> elements;
     [SerializeField] public float destroyTime = 15f;
 
+    public enum Element
+    {
+        Water,
+        Fire,
+        Air,
+        Earth
+    }
+
     protected Transform target;
 
     public virtual void Start()

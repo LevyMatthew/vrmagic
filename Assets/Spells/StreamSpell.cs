@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
-public class FlameStream : Spell
+public class StreamSpell : Spell
 {
-    [SerializeField] public float thrustForce = 12f;
+    [SerializeField] public float thrustAcceleration = 12f;
 
-    private CharacterBody bodyReceivingRecoil;
     private ParticleSystem[] particleSystems;
+    private CharacterBody bodyReceivingRecoil;
 
     public override void Start()
     {
@@ -18,6 +18,7 @@ public class FlameStream : Spell
         bodyReceivingRecoil = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterBody>();
     }
 
+
     public override void Hold()
     {
         //Maintain Joint
@@ -25,7 +26,8 @@ public class FlameStream : Spell
         transform.rotation = target.rotation;
 
         //Apply Recoil
-        Vector3 thrustVector = -transform.forward * thrustForce;        
+        float height = transform.position.y;       
+        Vector3 thrustVector = -transform.forward * thrustAcceleration;
         bodyReceivingRecoil.AddForce(thrustVector, ForceMode.Acceleration);        
     }
 

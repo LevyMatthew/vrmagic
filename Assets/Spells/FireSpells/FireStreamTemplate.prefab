@@ -9376,7 +9376,7 @@ GameObject:
   - component: {fileID: 1428410554714769862}
   - component: {fileID: 4077532548059396373}
   m_Layer: 0
-  m_Name: FlameStreamTemplate
+  m_Name: FireStreamTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

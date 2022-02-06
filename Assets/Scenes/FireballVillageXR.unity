@@ -15656,7 +15656,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4658291468791736651}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1731d642c0b250b48bb8cdfb153d9792, type: 3}
   m_Name: 
@@ -15675,7 +15675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highLightMaterial: {fileID: 2100000, guid: 7b939e5e799d98a469f594828ebab52e, type: 2}
-  fireHapticsOnHightlight: 1
+  fireHapticsOnHightlight: 0
 --- !u!114 &4658291468786231265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15744,7 +15744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highLightMaterial: {fileID: 2100000, guid: 7b939e5e799d98a469f594828ebab52e, type: 2}
-  fireHapticsOnHightlight: 1
+  fireHapticsOnHightlight: 0
 --- !u!114 &4658291468786309225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15930,7 +15930,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 4658291468791736651}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.25
   m_Height: 1.5
   m_Direction: 1
@@ -16138,7 +16138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &4658291468791746015
 GameObject:
   m_ObjectHideFlags: 0
@@ -16216,7 +16216,7 @@ MonoBehaviour:
       needsReinit: 0
     spellTemplatePrefab: {fileID: 1428410554714769860, guid: ac3c53c9eea678e45884c2d8381e891b,
       type: 3}
-    attachmentPoint: 0
+    attachmentPoint: 1
     spellInstance: {fileID: 0}
     spell: {fileID: 0}
   - action:
@@ -16391,10 +16391,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 7c96990a8e2f1cc4ea46b9383d26bb7f, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 1.75
+  m_Radius: 0.24
+  m_Height: 0.26
   m_Direction: 1
-  m_Center: {x: 0, y: 0.88, z: 0}
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!1 &4658291468791916403
 GameObject:
   m_ObjectHideFlags: 0
@@ -17579,7 +17579,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4658444850475293723}
   m_LocalRotation: {x: 0.32650566, y: -0.21263102, z: 0.6272114, w: 0.67437977}
-  m_LocalPosition: {x: 0.051999986, y: -0.0157, z: -0.11630082}
+  m_LocalPosition: {x: 0.1073, y: -0.0152, z: -0.1159}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4658291468792086987}
