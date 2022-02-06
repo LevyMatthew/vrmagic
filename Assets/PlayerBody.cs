@@ -44,9 +44,6 @@ public class CharacterBody : MonoBehaviour
 
         else if (forceMode == ForceMode.Impulse)
             velocity += force / mass;
-
-        else
-            Debug.Log("Unrecognized ForceMode. Force ignored.");
     }
 
     public void MovePosition(Vector3 position)
@@ -102,7 +99,6 @@ public class CharacterBody : MonoBehaviour
             ApplyGroundFriction(Vector3.up);
         }
         transform.position += velocity * dt;
-        Debug.Log("Force " + netForce);
         netForce = Vector3.zero;
     }
 

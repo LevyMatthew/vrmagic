@@ -45,7 +45,7 @@ namespace Valve.VR.Extras
             return Vector3.zero;
         }
 
-        private void FixedUpdate()
+        private void DoBooleanActionSpawns()
         {
             foreach (SpellActionConfig sac in actionConfigs)
             {
@@ -53,7 +53,7 @@ namespace Valve.VR.Extras
                 {
                     Transform target = transform;
                     if (sac.attachmentPoint == AttachmentPoint.ObjectHold)
-                        target = objectHoldPoint;                        
+                        target = objectHoldPoint;
                     else if (sac.attachmentPoint == AttachmentPoint.IndexFingerTip)
                         target = indexFingerTipPoint;
 
@@ -68,6 +68,13 @@ namespace Valve.VR.Extras
                     sac.spellInstance = null;
                 }
             }
+        }
+
+
+
+        private void FixedUpdate()
+        {
+            DoBooleanActionSpawns();
         }
     }
 }
