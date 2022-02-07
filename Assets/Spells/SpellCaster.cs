@@ -14,6 +14,7 @@ namespace Valve.VR.Extras
         {
             public SteamVR_Action_Boolean action;
             public GameObject spellTemplatePrefab;
+            public AttachmentMode attachMode;
             public AttachmentPoint attachmentPoint;
             [HideInInspector] public GameObject spellInstance;
             [HideInInspector] public Spell spell;
@@ -23,6 +24,12 @@ namespace Valve.VR.Extras
         {
             ObjectHold,
             IndexFingerTip,
+        };
+
+        public enum AttachmentMode
+        {
+            HandAttach,
+            TargetTransform
         };
 
         [SerializeField] public Transform objectHoldPoint;
@@ -59,12 +66,35 @@ namespace Valve.VR.Extras
 
                     sac.spellInstance = GameObject.Instantiate(sac.spellTemplatePrefab, target.position, target.rotation, null);
                     sac.spell = sac.spellInstance.GetComponent<Spell>();
-                    sac.spell.Grab(target);
+
+                    if (sac.attachMode == AttachmentMode.HandAttach)
+                    {
+                        Hand hand = GetComponent<Hand>();
+                        sac.spellInstance.SetActive(true);
+                        hand.AttachObject(sac.spellInstance, GrabTypes.Scripted);
+                    }
+                    else if (sac.attachMode == AttachmentMode.TargetTransform)
+                    {
+                        sac.spell.Grab(target);
+                    }
 
                 }
                 else if (sac.spellInstance != null && sac.action.GetStateUp(behaviourPose.inputSource))
                 {
-                    sac.spell.Release(GetVelocity());
+                    if (sac.attachMode == AttachmentMode.HandAttach)
+                    {
+                        Hand hand = GetComponent<Hand>();
+                        hand.DetachObject(sac.spellInstance, false);
+                    }
+                    else
+                    {
+                        sac.spell.Release(GetVelocity());
+                    }
+
+                    if (sac.spell.destroyTime >= 0f)
+                    {
+                        Destroy(sac.spellInstance, sac.spell.destroyTime);
+                    }
                     sac.spellInstance = null;
                 }
             }
@@ -76,5 +106,7 @@ namespace Valve.VR.Extras
         {
             DoBooleanActionSpawns();
         }
+
+      
     }
 }

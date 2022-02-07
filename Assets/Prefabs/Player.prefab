@@ -297,9 +297,9 @@ MonoBehaviour:
   renderModels: []
   mainRenderModel: {fileID: 0}
   hoverhighlightRenderModel: {fileID: 0}
-  showDebugText: 0
+  showDebugText: 1
   spewDebugText: 0
-  showDebugInteractables: 0
+  showDebugInteractables: 1
 --- !u!114 &6604732574728512984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,9 +479,9 @@ MonoBehaviour:
   renderModels: []
   mainRenderModel: {fileID: 0}
   hoverhighlightRenderModel: {fileID: 0}
-  showDebugText: 0
+  showDebugText: 1
   spewDebugText: 0
-  showDebugInteractables: 0
+  showDebugInteractables: 1
 --- !u!114 &6604732575118358618
 MonoBehaviour:
   m_ObjectHideFlags: 0

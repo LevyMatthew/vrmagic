@@ -15,18 +15,19 @@ public class CharacterBody : MonoBehaviour
     public float groundFriction = 1f;
     public float airFriction = 0.05f;
     public bool useGravity = true;
+    public bool stickyFeet = true;
+    public bool grounded = false;
+
 
     public Vector3 acceleration;
     public Vector3 velocity;
     public Vector3 netForce;
 
-    private bool grounded;
     private CapsuleCollider capsuleCollider;
     // Start is called before the first frame update
     void Start()
     {
         capsuleCollider = GetComponent<CapsuleCollider>();
-        grounded = false;
         netForce = Vector3.zero;
         velocity = Vector3.zero;
     }
@@ -93,11 +94,18 @@ public class CharacterBody : MonoBehaviour
         float dt = Time.fixedDeltaTime;
         Vector3 acceleration = netForce / mass;
         velocity += acceleration * dt;
+
         if (grounded)
         {
             velocity.y = Mathf.Max(velocity.y, 0f); //Rejecting with normal up. For general terrain, use collision normal
             ApplyGroundFriction(Vector3.up);
+            if (stickyFeet)
+            {
+                velocity.x = 0f;
+                velocity.z = 0f;
+            }
         }
+
         transform.position += velocity * dt;
         netForce = Vector3.zero;
     }

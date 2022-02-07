@@ -7,6 +7,8 @@ public class Spell : MonoBehaviour
 {
     [SerializeField] public List<Element> elements;
     [SerializeField] public float destroyTime = 15f;
+    [SerializeField] public Vector3 force = Vector3.zero;
+    [SerializeField] public ForceMode forceMode = ForceMode.Force;
 
     public enum Element
     {
@@ -34,21 +36,21 @@ public class Spell : MonoBehaviour
         }
     }
 
+    //Use Hand.AttachObject when possible. Grab is for simply targeting abritrary transforms
     public virtual void Grab(Transform target)
     {
         this.target = target;
-        transform.position = target.position;
-        transform.rotation = target.rotation;
     }
 
     public virtual void Hold()
     {
+        transform.position = target.position;
+        transform.rotation = target.rotation;
     }
 
     public virtual void Release(Vector3 velocity)
     {
-        target = null;
-        Object.Destroy(gameObject, destroyTime);
+        this.target = null;
     }
 
 }
