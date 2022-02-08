@@ -18,6 +18,8 @@ public class CharacterBody : MonoBehaviour
     public bool stickyFeet = true;
     public bool grounded = false;
 
+    public CharacterController characterController;
+
 
     public Vector3 acceleration;
     public Vector3 velocity;
@@ -28,6 +30,7 @@ public class CharacterBody : MonoBehaviour
     void Start()
     {
         capsuleCollider = GetComponent<CapsuleCollider>();
+        characterController = GetComponent<CharacterController>();
         netForce = Vector3.zero;
         velocity = Vector3.zero;
     }
@@ -47,24 +50,16 @@ public class CharacterBody : MonoBehaviour
             velocity += force / mass;
     }
 
-    public void MovePosition(Vector3 position)
+    public void MovePosition(Vector3 move)
     {
-        transform.position = position;
-    }
+        //transform.position = position;
+        CollisionFlags flags = characterController.Move(move);
 
-    public void UpdateGrounded()
-    {
-
-        if (!grounded && transform.position.y < 0f)
+        if ((flags & CollisionFlags.Below) != 0)
         {
-            Vector3 position = transform.position;
-            position.y = 0f;
-            netForce = Vector3.zero;
-            MovePosition(position);
             grounded = true;
         }
-
-        if (grounded && transform.position.y > 0f)
+        else
         {
             grounded = false;
         }
@@ -82,8 +77,6 @@ public class CharacterBody : MonoBehaviour
 
     public void FixedUpdate()
     {
-        UpdateGrounded();
-
         if (useGravity && !grounded)
         {
             AddForce(Vector3.down * 9.81f, ForceMode.Acceleration);
@@ -106,7 +99,7 @@ public class CharacterBody : MonoBehaviour
             }
         }
 
-        transform.position += velocity * dt;
+        MovePosition(velocity * dt);
         netForce = Vector3.zero;
     }
 

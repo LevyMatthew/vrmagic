@@ -73,6 +73,7 @@ public class SpellInteractable : MonoBehaviour
     public void Ignite()
     {
         isOnFire = true;
+        onFireParticles.gameObject.SetActive(true);
         onFireParticles.Play();
     }
 

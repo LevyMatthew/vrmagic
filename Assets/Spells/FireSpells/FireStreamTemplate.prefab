@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1162723886352338440}
   - component: {fileID: 1338564407675359202}
   - component: {fileID: 1364058243200941344}
+  - component: {fileID: 894528264593826364}
   m_Layer: 0
   m_Name: FlameStreamParticleEffect
   m_TagString: Untagged
@@ -4637,6 +4638,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &894528264593826364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166268800336978594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27bcf79ba530ce4291d71cfcd321f0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1166268800512772106
 GameObject:
   m_ObjectHideFlags: 0
@@ -9376,7 +9389,6 @@ GameObject:
   - component: {fileID: 1428410554714769862}
   - component: {fileID: 4077532548059396373}
   - component: {fileID: 8425789546175153503}
-  - component: {fileID: 883939341632639833}
   m_Layer: 0
   m_Name: FireStreamTemplate
   m_TagString: Untagged
@@ -9461,7 +9473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ebd631f8a062242aff30b9e606a9a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elements: 
+  elements: 01000000
   destroyTime: 0
   force: {x: 0, y: 0, z: 0}
   forceMode: 0
@@ -9519,24 +9531,6 @@ MonoBehaviour:
   highlightOnHover: 1
   hideHighlight: []
   hoverPriority: 0
---- !u!114 &883939341632639833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1428410554714769860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5ebd631f8a062242aff30b9e606a9a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  elements: 
-  destroyTime: 15
-  force: {x: 0, y: 0, z: 0}
-  forceMode: 0
-  thrustAcceleration: 12
-  minTakeoffPercent: 0.7
 --- !u!1001 &309816181005647622
 PrefabInstance:
   m_ObjectHideFlags: 0
