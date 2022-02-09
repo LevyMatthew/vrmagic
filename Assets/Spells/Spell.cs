@@ -7,6 +7,8 @@ public class Spell : MonoBehaviour
 {
     [SerializeField] public List<Element> elements;
     [SerializeField] public float destroyTime = 0f;
+    [SerializeField] public Vector3 force = Vector3.zero;
+    [SerializeField] public ForceMode forceMode = ForceMode.Force;
 
     public enum Element
     {
@@ -38,8 +40,6 @@ public class Spell : MonoBehaviour
     public virtual void Begin(Transform casterTransform)
     {        
         this.target = casterTransform;
-        transform.position = casterTransform.position;
-        transform.rotation = casterTransform.rotation;
     }
 
     public virtual void Hold()
@@ -53,8 +53,7 @@ public class Spell : MonoBehaviour
 
     public virtual void Release(Vector3 velocity)
     {
-        target = null;
-        Object.Destroy(gameObject, destroyTime);
+        this.target = null;
     }
 
 }

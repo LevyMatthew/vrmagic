@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1162723886352338440}
   - component: {fileID: 1338564407675359202}
   - component: {fileID: 1364058243200941344}
+  - component: {fileID: 894528264593826364}
   m_Layer: 0
   m_Name: FlameStreamParticleEffect
   m_TagString: Untagged
@@ -3610,7 +3611,7 @@ ParticleSystem:
     radiusScale: 0.05
     collidesWith:
       serializedVersion: 2
-      m_Bits: 8
+      m_Bits: 9
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -4625,18 +4626,30 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: -0.16, z: 0.15}
   m_Flip: {x: 0, y: 0, z: 0}
-  m_UseCustomVertexStreams: 0
+  m_UseCustomVertexStreams: 1
   m_EnableGPUInstancing: 0
   m_ApplyActiveColorSpace: 0
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
-  m_VertexStreams: 0001030405
+  m_VertexStreams: 000304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &894528264593826364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166268800336978594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27bcf79ba530ce4291d71cfcd321f0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1166268800512772106
 GameObject:
   m_ObjectHideFlags: 0
@@ -9375,6 +9388,7 @@ GameObject:
   - component: {fileID: 1428410554714769864}
   - component: {fileID: 1428410554714769862}
   - component: {fileID: 4077532548059396373}
+  - component: {fileID: 8425789546175153503}
   m_Layer: 0
   m_Name: FireStreamTemplate
   m_TagString: Untagged
@@ -9459,8 +9473,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ebd631f8a062242aff30b9e606a9a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTime: 3
-  thrustMultiplier: 2
+  elements: 01000000
+  destroyTime: 0
+  force: {x: 0, y: 0, z: 0}
+  forceMode: 0
+  thrustAcceleration: 12
+  minTakeoffPercent: 0.7
+--- !u!114 &8425789546175153503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428410554714769860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateActionSetOnAttach:
+    actionSetPath: 
+  hideHandOnAttach: 0
+  hideSkeletonOnAttach: 0
+  hideControllerOnAttach: 0
+  handAnimationOnPickup: 0
+  setRangeOfMotionOnPickup: -1
+  useHandObjectAttachmentPoint: 1
+  attachEaseIn: 0
+  snapAttachEaseInCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  snapAttachEaseInTime: 0.15
+  snapAttachEaseInCompleted: 0
+  skeletonPoser: {fileID: 0}
+  handFollowTransform: 1
+  highlightOnHover: 1
+  hideHighlight: []
+  hoverPriority: 0
 --- !u!1001 &309816181005647622
 PrefabInstance:
   m_ObjectHideFlags: 0

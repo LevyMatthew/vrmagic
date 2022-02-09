@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class PulseSpell : Spell
 {
@@ -11,7 +12,7 @@ public class PulseSpell : Spell
     {
         base.Start();
         //TODO: Find a way to inject recoil-receiving physics body (needs only implement AddForce)
-        bodyReceivingRecoil = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterBody>();
+        bodyReceivingRecoil = Player.instance.GetComponent<CharacterBody>();
         Hold();
         target = null;
     }
@@ -26,5 +27,4 @@ public class PulseSpell : Spell
         Vector3 thrustVector = -transform.forward * deltaVelocity;
         bodyReceivingRecoil.AddForce(thrustVector, ForceMode.VelocityChange);
     }
-
 }

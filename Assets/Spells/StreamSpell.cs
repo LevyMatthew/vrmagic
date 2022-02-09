@@ -5,7 +5,8 @@ using Valve.VR.InteractionSystem;
 
 public class StreamSpell : Spell
 {
-    [SerializeField] public float thrustAcceleration = 12f;
+    [SerializeField] public float thrustAcceleration = 12f;    
+    [SerializeField] public float minTakeoffPercent = 0.7f;
 
     private ParticleSystem[] particleSystems;
     private CharacterBody bodyReceivingRecoil;
@@ -15,7 +16,7 @@ public class StreamSpell : Spell
         base.Start();
         particleSystems = GetComponentsInChildren<ParticleSystem>();
         //TODO: Find a way to inject recoil-receiving physics body (needs only implement AddForce)
-        bodyReceivingRecoil = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterBody>();
+        bodyReceivingRecoil = Player.instance.gameObject.GetComponent<CharacterBody>();
     }
 
 
@@ -26,8 +27,18 @@ public class StreamSpell : Spell
         transform.rotation = target.rotation;
 
         //Apply Recoil
-        float height = transform.position.y;       
+        float height = transform.position.y;
         Vector3 thrustVector = -transform.forward * thrustAcceleration;
+
+        if (bodyReceivingRecoil.grounded && bodyReceivingRecoil.stickyFeet)
+        {
+            if (thrustVector.y < thrustAcceleration * minTakeoffPercent)
+                thrustVector = Vector3.zero;
+            else
+                bodyReceivingRecoil.AddForce(Vector3.up * 1f, ForceMode.VelocityChange);
+        }
+
+        //float pitch = 
         bodyReceivingRecoil.AddForce(thrustVector, ForceMode.Acceleration);        
     }
 
@@ -40,6 +51,7 @@ public class StreamSpell : Spell
                 ps.Stop();
             }
         }
-        base.Release(velocity);
+        target = null;
+        Object.Destroy(gameObject, destroyTime);
     }
 }

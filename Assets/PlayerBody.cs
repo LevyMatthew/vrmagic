@@ -15,18 +15,22 @@ public class CharacterBody : MonoBehaviour
     public float groundFriction = 1f;
     public float airFriction = 0.05f;
     public bool useGravity = true;
+    public bool stickyFeet = true;
+    public bool grounded = false;
+
+    public CharacterController characterController;
+
 
     public Vector3 acceleration;
     public Vector3 velocity;
     public Vector3 netForce;
 
-    private bool grounded;
     private CapsuleCollider capsuleCollider;
     // Start is called before the first frame update
     void Start()
     {
         capsuleCollider = GetComponent<CapsuleCollider>();
-        grounded = false;
+        characterController = GetComponent<CharacterController>();
         netForce = Vector3.zero;
         velocity = Vector3.zero;
     }
@@ -46,24 +50,16 @@ public class CharacterBody : MonoBehaviour
             velocity += force / mass;
     }
 
-    public void MovePosition(Vector3 position)
+    public void MovePosition(Vector3 move)
     {
-        transform.position = position;
-    }
+        //transform.position = position;
+        CollisionFlags flags = characterController.Move(move);
 
-    public void UpdateGrounded()
-    {
-
-        if (!grounded && transform.position.y < 0f)
+        if ((flags & CollisionFlags.Below) != 0)
         {
-            Vector3 position = transform.position;
-            position.y = 0f;
-            netForce = Vector3.zero;
-            MovePosition(position);
             grounded = true;
         }
-
-        if (grounded && transform.position.y > 0f)
+        else
         {
             grounded = false;
         }
@@ -81,8 +77,6 @@ public class CharacterBody : MonoBehaviour
 
     public void FixedUpdate()
     {
-        UpdateGrounded();
-
         if (useGravity && !grounded)
         {
             AddForce(Vector3.down * 9.81f, ForceMode.Acceleration);
@@ -93,12 +87,19 @@ public class CharacterBody : MonoBehaviour
         float dt = Time.fixedDeltaTime;
         Vector3 acceleration = netForce / mass;
         velocity += acceleration * dt;
+
         if (grounded)
         {
             velocity.y = Mathf.Max(velocity.y, 0f); //Rejecting with normal up. For general terrain, use collision normal
             ApplyGroundFriction(Vector3.up);
+            if (stickyFeet)
+            {
+                velocity.x = 0f;
+                velocity.z = 0f;
+            }
         }
-        transform.position += velocity * dt;
+
+        MovePosition(velocity * dt);
         netForce = Vector3.zero;
     }
 
