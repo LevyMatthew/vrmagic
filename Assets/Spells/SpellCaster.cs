@@ -59,7 +59,7 @@ namespace Valve.VR.Extras
 
                     sac.spellInstance = GameObject.Instantiate(sac.spellTemplatePrefab, target.position, target.rotation, null);
                     sac.spell = sac.spellInstance.GetComponent<Spell>();
-                    sac.spell.Grab(target);
+                    sac.spell.Begin(target);
 
                 }
                 else if (sac.spellInstance != null && sac.action.GetStateUp(behaviourPose.inputSource))

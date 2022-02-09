@@ -16,6 +16,7 @@ public class Spell : MonoBehaviour
         Earth
     }
 
+    public bool fixToHand = true;
     protected Transform target;
 
     public virtual void Start()
@@ -34,15 +35,20 @@ public class Spell : MonoBehaviour
         }
     }
 
-    public virtual void Grab(Transform target)
-    {
-        this.target = target;
-        transform.position = target.position;
-        transform.rotation = target.rotation;
+    public virtual void Begin(Transform casterTransform)
+    {        
+        this.target = casterTransform;
+        transform.position = casterTransform.position;
+        transform.rotation = casterTransform.rotation;
     }
 
     public virtual void Hold()
     {
+        if (fixToHand)
+        {
+            transform.position = target.position;
+            transform.rotation = target.rotation;
+        }
     }
 
     public virtual void Release(Vector3 velocity)
