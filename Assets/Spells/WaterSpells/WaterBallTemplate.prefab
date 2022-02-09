@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5241979014051947749, guid: c547afeb3337f374ebd93443aa9090db,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5241979014051947751, guid: c547afeb3337f374ebd93443aa9090db,
         type: 3}
       propertyPath: m_Name
@@ -16,6 +21,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241979014051947754, guid: c547afeb3337f374ebd93443aa9090db,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241979014051947754, guid: c547afeb3337f374ebd93443aa9090db,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241979014051947754, guid: c547afeb3337f374ebd93443aa9090db,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 5241979014051947754, guid: c547afeb3337f374ebd93443aa9090db,
         type: 3}
@@ -69,6 +89,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8039264720182843003, guid: c547afeb3337f374ebd93443aa9090db,
         type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039264720182843003, guid: c547afeb3337f374ebd93443aa9090db,
+        type: 3}
       propertyPath: InitialModule.rotation3D
       value: 0
       objectReference: {fileID: 0}
@@ -96,6 +121,16 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startSizeZ.minMaxState
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039402199036692045, guid: c547afeb3337f374ebd93443aa9090db,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039889107956758909, guid: c547afeb3337f374ebd93443aa9090db,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c547afeb3337f374ebd93443aa9090db, type: 3}
