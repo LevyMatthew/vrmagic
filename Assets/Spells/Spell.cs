@@ -6,7 +6,7 @@ using Valve.VR.Extras;
 public class Spell : MonoBehaviour
 {
     [SerializeField] public List<Element> elements;
-    [SerializeField] public float destroyTime = 15f;
+    [SerializeField] public float destroyTime = 0f;
     [SerializeField] public Vector3 force = Vector3.zero;
     [SerializeField] public ForceMode forceMode = ForceMode.Force;
 
@@ -18,6 +18,7 @@ public class Spell : MonoBehaviour
         Earth
     }
 
+    public bool fixToHand = true;
     protected Transform target;
 
     public virtual void Start()
@@ -36,16 +37,18 @@ public class Spell : MonoBehaviour
         }
     }
 
-    //Use Hand.AttachObject when possible. Grab is for simply targeting abritrary transforms
-    public virtual void Grab(Transform target)
-    {
-        this.target = target;
+    public virtual void Begin(Transform casterTransform)
+    {        
+        this.target = casterTransform;
     }
 
     public virtual void Hold()
     {
-        transform.position = target.position;
-        transform.rotation = target.rotation;
+        if (fixToHand)
+        {
+            transform.position = target.position;
+            transform.rotation = target.rotation;
+        }
     }
 
     public virtual void Release(Vector3 velocity)

@@ -75,7 +75,7 @@ namespace Valve.VR.Extras
                     }
                     else if (sac.attachMode == AttachmentMode.TargetTransform)
                     {
-                        sac.spell.Grab(target);
+                        sac.spell.Begin(target);
                     }
 
                 }

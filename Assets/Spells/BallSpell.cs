@@ -14,7 +14,7 @@ public class BallSpell : Spell
         this.rb = GetComponent<Rigidbody>();
     }
 
-    public override void Grab(Transform target)
+    public override void Begin(Transform target)
     {
         this.target = target;
         rb.useGravity = false;
