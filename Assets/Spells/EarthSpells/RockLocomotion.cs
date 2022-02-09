@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RockSpell : MonoBehaviour
+public class RockLocomotion : MonoBehaviour
 {
 	[SerializeField] private Rigidbody rigidbody;
 	[SerializeField] private float initialVelocity;

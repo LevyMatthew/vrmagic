@@ -6,7 +6,7 @@ using Valve.VR.Extras;
 public class Spell : MonoBehaviour
 {
     [SerializeField] public List<Element> elements;
-    [SerializeField] public float destroyTime = 15f;
+    [SerializeField] public float destroyTime = 0f;
 
     public enum Element
     {
