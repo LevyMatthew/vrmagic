@@ -6,6 +6,8 @@ using UnityEngine;
 public class SpellInteractable : MonoBehaviour
 {
     [SerializeField] public bool isFlammable = false;
+    [SerializeField] public bool isLevitatable = false;
+    [SerializeField] public bool isBreakable = false; //TODO: Implement
     [SerializeField] public bool isOnFire = false;
     [SerializeField] public float temperature = 25f;
 

@@ -124,9 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0522eaef74d984591c060d05a095c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  borderThickness: 0.15
+  borderThickness: 0.02
   wireframeHeight: 2
-  drawWireframeWhenSelectedOnly: 0
+  drawWireframeWhenSelectedOnly: 1
   drawInGame: 1
   size: 0
   color: {r: 0, g: 1, b: 1, a: 1}
@@ -135,10 +135,10 @@ MonoBehaviour:
   - {x: -1.0500011, y: 0.01, z: -0.95000064}
   - {x: -1.0500011, y: 0.01, z: 0.95000064}
   - {x: 1.0500004, y: 0.01, z: 0.95000076}
-  - {x: 1.2000003, y: 0.01, z: -1.1000005}
-  - {x: -1.2000011, y: 0.01, z: -1.1000006}
-  - {x: -1.2000011, y: 0.01, z: 1.1000006}
-  - {x: 1.2000004, y: 0.01, z: 1.1000007}
+  - {x: 1.0700003, y: 0, z: -0.9700005}
+  - {x: -1.0700011, y: 0, z: -0.9700006}
+  - {x: -1.0700011, y: 0, z: 0.9700006}
+  - {x: 1.0700004, y: 0, z: 0.97000074}
 --- !u!1 &2440848887577315095
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,9 +453,9 @@ MonoBehaviour:
   renderModels: []
   mainRenderModel: {fileID: 0}
   hoverhighlightRenderModel: {fileID: 0}
-  showDebugText: 1
+  showDebugText: 0
   spewDebugText: 0
-  showDebugInteractables: 1
+  showDebugInteractables: 0
 --- !u!114 &6604732574728512984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,9 +507,9 @@ MonoBehaviour:
   - action:
       actionPath: /actions/default/in/InteractUI
       needsReinit: 0
-    spellTemplatePrefab: {fileID: 1428410554714769860, guid: ac3c53c9eea678e45884c2d8381e891b,
+    spellTemplatePrefab: {fileID: 1428410554714769860, guid: 8588df31120540149bc12533e7b7cff5,
       type: 3}
-    attachMode: 0
+    attachMode: 1
     attachmentPoint: 1
     spellInstance: {fileID: 0}
     spell: {fileID: 0}
@@ -518,16 +518,16 @@ MonoBehaviour:
       needsReinit: 0
     spellTemplatePrefab: {fileID: 1000014033464604, guid: 3c9067232bcfe2b49990a78433be7946,
       type: 3}
-    attachMode: 0
+    attachMode: 1
     attachmentPoint: 1
     spellInstance: {fileID: 0}
     spell: {fileID: 0}
   - action:
-      actionPath: /actions/default/in/GrabGrip
+      actionPath: /actions/default/in/Teleport
       needsReinit: 0
-    spellTemplatePrefab: {fileID: 1000014033464604, guid: 73ab9169717250849a663f8d569565a5,
+    spellTemplatePrefab: {fileID: 1000014033464604, guid: 3c9067232bcfe2b49990a78433be7946,
       type: 3}
-    attachMode: 0
+    attachMode: 1
     attachmentPoint: 1
     spellInstance: {fileID: 0}
     spell: {fileID: 0}
@@ -601,7 +601,7 @@ MonoBehaviour:
   hoverSphereRadius: 0.075
   hoverLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 63
   hoverUpdateInterval: 0.1
   useControllerHoverComponent: 1
   controllerHoverComponent: tip
@@ -674,7 +674,7 @@ MonoBehaviour:
       needsReinit: 0
     spellTemplatePrefab: {fileID: 1428410554714769860, guid: ac3c53c9eea678e45884c2d8381e891b,
       type: 3}
-    attachMode: 0
+    attachMode: 1
     attachmentPoint: 1
     spellInstance: {fileID: 0}
     spell: {fileID: 0}
@@ -683,16 +683,7 @@ MonoBehaviour:
       needsReinit: 0
     spellTemplatePrefab: {fileID: 1428410554714769860, guid: e365f9fc71ca40246a91acaa82e50362,
       type: 3}
-    attachMode: 0
-    attachmentPoint: 1
-    spellInstance: {fileID: 0}
-    spell: {fileID: 0}
-  - action:
-      actionPath: /actions/default/in/GrabGrip
-      needsReinit: 0
-    spellTemplatePrefab: {fileID: 1428410554714769860, guid: 665f68191100af34797585d5d7a19955,
-      type: 3}
-    attachMode: 0
+    attachMode: 1
     attachmentPoint: 1
     spellInstance: {fileID: 0}
     spell: {fileID: 0}
@@ -1257,7 +1248,7 @@ GameObject:
   - component: {fileID: 6502559185418385040}
   - component: {fileID: 6502559185413056473}
   - component: {fileID: 6502559185413056487}
-  - component: {fileID: 6963868427834925349}
+  - component: {fileID: 1884058716}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -1272,7 +1263,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6502559185413056484}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13.83, y: 2.22, z: -7.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1347,11 +1338,11 @@ MonoBehaviour:
   useGravity: 1
   stickyFeet: 1
   grounded: 0
-  characterController: {fileID: 6963868427834925349}
+  characterController: {fileID: 1884058716}
   acceleration: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   netForce: {x: 0, y: 0, z: 0}
---- !u!143 &6963868427834925349
+--- !u!143 &1884058716
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2747,7 +2738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6499695770665087302
 Transform:
   m_ObjectHideFlags: 0

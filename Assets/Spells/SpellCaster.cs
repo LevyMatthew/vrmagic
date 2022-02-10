@@ -9,6 +9,10 @@ namespace Valve.VR.Extras
     public class SpellCaster : MonoBehaviour
     {
 
+        public GameObject spellPreviewPrefab;
+        private GameObject spellPreviewInstance;
+
+
         [System.Serializable]
         public class SpellActionConfig
         {
@@ -16,7 +20,7 @@ namespace Valve.VR.Extras
             public GameObject spellTemplatePrefab;
             public AttachmentMode attachMode;
             public AttachmentPoint attachmentPoint;
-            [HideInInspector] public GameObject spellInstance;
+            [HideInInspector] public GameObject spellInstance;            
             [HideInInspector] public Spell spell;
         }
 
@@ -34,7 +38,6 @@ namespace Valve.VR.Extras
 
         [SerializeField] public Transform objectHoldPoint;
         [SerializeField] public Transform indexFingerTipPoint;
-
         [SerializeField] public List<SpellActionConfig> actionConfigs;
         
         SteamVR_Behaviour_Pose behaviourPose;
@@ -43,6 +46,10 @@ namespace Valve.VR.Extras
         {
             //behaviourPose = GetComponent<SteamVR_Behaviour_Pose>();
             behaviourPose = GetComponentInParent<SteamVR_Behaviour_Pose>();
+            if (spellPreviewPrefab != null)
+            {
+                spellPreviewInstance = GameObject.Instantiate(spellPreviewPrefab, transform);
+            }
         }
 
         private Vector3 GetVelocity()
