@@ -8,10 +8,9 @@ public class PulseSpell : Spell
     [SerializeField] public float deltaVelocity = 3f;
     private CharacterBody bodyReceivingRecoil;
 
-    public override void Start()
+    public override void Begin(SpellCaster caster, Transform target)
     {
-        base.Start();
-        //TODO: Find a way to inject recoil-receiving physics body (needs only implement AddForce)
+        base.Begin(caster, target);
         bodyReceivingRecoil = Player.instance.GetComponent<CharacterBody>();
         Hold();
         target = null;
@@ -20,6 +19,7 @@ public class PulseSpell : Spell
 
     public override void Hold()
     {
+        base.Hold();
         //Maintain Joint
         transform.position = target.position;
         transform.rotation = target.rotation;

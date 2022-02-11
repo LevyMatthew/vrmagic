@@ -8,15 +8,10 @@ public class BallSpell : Spell
     public float velocityMultiplier = 10f;    
     protected Rigidbody rb;
 
-    public override void Awake()
+    public override void Begin(SpellCaster caster, Transform target)
     {
-        base.Awake();
-        this.rb = GetComponent<Rigidbody>();
-    }
-
-    public override void Begin(Transform target)
-    {
-        this.target = target;
+        base.Begin(caster, target);
+        rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.isKinematic = true;
         Hold();

@@ -10,15 +10,12 @@ public class RaycastSpell : Spell
     [SerializeField] public LayerMask layerMask;
     [SerializeField] public QueryTriggerInteraction triggerInteraction; 
 
-    protected Transform casterTransform;
-
-
-    public override void Begin(Transform casterTransform)
+    public override void Begin(SpellCaster caster, Transform target)
     {
-        this.casterTransform = casterTransform;
+        base.Begin(caster, target);
         bool hit;
-        Vector3 direction = casterTransform.forward;
-        Vector3 origin = casterTransform.position;
+        Vector3 direction = caster.transform.forward;
+        Vector3 origin = caster.transform.position;
         RaycastHit hitInfo;
         Debug.Log("From " + origin + " direction " + direction);
         hit = Physics.Raycast(origin, direction, out hitInfo, range, layerMask, triggerInteraction);

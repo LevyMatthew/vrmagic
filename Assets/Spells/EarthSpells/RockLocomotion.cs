@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RockLocomotion : MonoBehaviour
 {
-	[SerializeField] private Rigidbody rigidbody;
+	[SerializeField] private Rigidbody rb;
 	[SerializeField] private float initialVelocity;
 	[SerializeField] private float duration;
 
@@ -13,13 +13,14 @@ public class RockLocomotion : MonoBehaviour
     void Start()
     {
     	startTime = Time.time;
-    	rigidbody.AddForce(Vector3.up * initialVelocity, ForceMode.VelocityChange);
+        rb.AddForce(Vector3.up * initialVelocity, ForceMode.VelocityChange);
     }
 
     void Update()
     {
         if(Time.time - startTime >= duration){
-        	rigidbody.velocity = Vector3.zero;
+            rb.velocity = Vector3.zero;
+            Component.Destroy(this);
         }
     }
 }

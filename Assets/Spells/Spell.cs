@@ -19,15 +19,8 @@ public class Spell : MonoBehaviour
     }
 
     public bool fixToHand = true;
+    protected SpellCaster caster;
     protected Transform target;
-
-    public virtual void Start()
-    {
-    }
-
-    public virtual void Awake()
-    {
-    }
 
     void FixedUpdate()
     {
@@ -37,9 +30,10 @@ public class Spell : MonoBehaviour
         }
     }
 
-    public virtual void Begin(Transform casterTransform)
+    public virtual void Begin(SpellCaster caster, Transform target)
     {        
-        this.target = casterTransform;
+        this.caster = caster;
+        this.target = target;
     }
 
     public virtual void Hold()

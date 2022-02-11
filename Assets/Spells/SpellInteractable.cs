@@ -6,16 +6,18 @@ using UnityEngine;
 public class SpellInteractable : MonoBehaviour
 {
     [SerializeField] public bool isFlammable = false;
+    [SerializeField] public bool isLevitatable = false;
+    [SerializeField] public bool isBreakable = false; //TODO: Implement
     [SerializeField] public bool isOnFire = false;
     [SerializeField] public float temperature = 25f;
 
     private ParticleSystem onFireParticles;
 
-    private Rigidbody rigidbody;    
+    private Rigidbody rb;
 
     public void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         onFireParticles = GetComponentInChildren<ParticleSystem>();
     }
 
@@ -62,12 +64,12 @@ public class SpellInteractable : MonoBehaviour
 
     public void ApplyForce(Vector3 force, ForceMode forceMode = ForceMode.Force)
     {
-        rigidbody.AddForce(force, forceMode);
+        rb.AddForce(force, forceMode);
     }
 
     public void ApplyForceAtPosition(Vector3 force, Vector3 position, ForceMode forceMode = ForceMode.Force)
     {
-        rigidbody.AddForceAtPosition(force, position, forceMode);
+        rb.AddForceAtPosition(force, position, forceMode);
     }
 
     public void Ignite()
