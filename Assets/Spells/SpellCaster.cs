@@ -3,14 +3,14 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Valve.VR.InteractionSystem;
+using Valve.VR.Extras;
+using Valve.VR;
 
-namespace Valve.VR.Extras
-{
-    public class SpellCaster : MonoBehaviour
+public class SpellCaster : MonoBehaviour
     {
 
         public GameObject spellPreviewPrefab;
-        private GameObject spellPreviewInstance;
+        private SpellPreview spellPreview;
 
 
         [System.Serializable]
@@ -18,37 +18,38 @@ namespace Valve.VR.Extras
         {
             public SteamVR_Action_Boolean action;
             public GameObject spellTemplatePrefab;
-            public AttachmentMode attachMode;
             public AttachmentPoint attachmentPoint;
             [HideInInspector] public GameObject spellInstance;            
             [HideInInspector] public Spell spell;
         }
 
-        public enum AttachmentPoint // your custom enumeration
+       public enum AttachmentPoint // your custom enumeration
         {
-            ObjectHold,
+            Hand,
+            Palm,
             IndexFingerTip,
-        };
+            MiddleFingerTip,
+            UlnarBorder,
+            PreviewSelect
+    };
 
-        public enum AttachmentMode
-        {
-            HandAttach,
-            TargetTransform
-        };
+        [SerializeField] public Transform palmTransform;
+        [SerializeField] public Transform indexFingerTipTransform;
+        [SerializeField] public Transform middleFingerTipTransform;
+        [SerializeField] public Transform ulnarBorderTransform;
 
-        [SerializeField] public Transform objectHoldPoint;
-        [SerializeField] public Transform indexFingerTipPoint;
         [SerializeField] public List<SpellActionConfig> actionConfigs;
         
         SteamVR_Behaviour_Pose behaviourPose;
 
-        private void Awake()
+    private void Awake()
         {
             //behaviourPose = GetComponent<SteamVR_Behaviour_Pose>();
             behaviourPose = GetComponentInParent<SteamVR_Behaviour_Pose>();
             if (spellPreviewPrefab != null)
             {
-                spellPreviewInstance = GameObject.Instantiate(spellPreviewPrefab, transform);
+                GameObject spellPreviewInstance = Instantiate(spellPreviewPrefab, transform);
+                spellPreview = spellPreviewInstance.GetComponent<SpellPreview>();
             }
         }
 
@@ -65,38 +66,42 @@ namespace Valve.VR.Extras
             {
                 if (sac.spellInstance == null && sac.action.GetStateDown(behaviourPose.inputSource))
                 {
-                    Transform target = transform;
-                    if (sac.attachmentPoint == AttachmentPoint.ObjectHold)
-                        target = objectHoldPoint;
-                    else if (sac.attachmentPoint == AttachmentPoint.IndexFingerTip)
-                        target = indexFingerTipPoint;
+                    Transform target = null;
 
-                    sac.spellInstance = GameObject.Instantiate(sac.spellTemplatePrefab, target.position, target.rotation, null);
-                    sac.spell = sac.spellInstance.GetComponent<Spell>();
-
-                    if (sac.attachMode == AttachmentMode.HandAttach)
+                    switch (sac.attachmentPoint)
                     {
-                        Hand hand = GetComponent<Hand>();
-                        sac.spellInstance.SetActive(true);
-                        hand.AttachObject(sac.spellInstance, GrabTypes.Scripted);
-                    }
-                    else if (sac.attachMode == AttachmentMode.TargetTransform)
-                    {
-                        sac.spell.Begin(target);
+                        case AttachmentPoint.Hand:
+                            target = transform;
+                            break;
+                        case AttachmentPoint.Palm:
+                            target = palmTransform;
+                            break;
+                        case AttachmentPoint.IndexFingerTip:
+                            target = indexFingerTipTransform;
+                            break;
+                        case AttachmentPoint.MiddleFingerTip:
+                            target = middleFingerTipTransform;
+                            break;
+                        case AttachmentPoint.UlnarBorder:
+                            target = ulnarBorderTransform;
+                            break;
+                        case AttachmentPoint.PreviewSelect:
+                            target = GetPreviewTarget();
+                            break;
                     }
 
-                }
-                else if (sac.spellInstance != null && sac.action.GetStateUp(behaviourPose.inputSource))
+                    if (target != null)
+                    {
+                        sac.spellInstance = GameObject.Instantiate(sac.spellTemplatePrefab, target.position, target.rotation, null);
+                        sac.spell = sac.spellInstance.GetComponent<Spell>();
+                        if (sac.spell != null)
+                            sac.spell.Begin(this, target);
+                    }
+
+            }
+            else if (sac.spellInstance != null && sac.action.GetStateUp(behaviourPose.inputSource))
                 {
-                    if (sac.attachMode == AttachmentMode.HandAttach)
-                    {
-                        Hand hand = GetComponent<Hand>();
-                        hand.DetachObject(sac.spellInstance, false);
-                    }
-                    else
-                    {
-                        sac.spell.Release(GetVelocity());
-                    }
+                    sac.spell.Release(GetVelocity());
 
                     if (sac.spell.destroyTime >= 0f)
                     {
@@ -104,16 +109,19 @@ namespace Valve.VR.Extras
                     }
                     sac.spellInstance = null;
                 }
-            }
         }
+    }
 
 
 
-        private void FixedUpdate()
+    private void FixedUpdate()
         {
             DoBooleanActionSpawns();
         }
 
-      
+    public Transform GetPreviewTarget()
+    {
+        return spellPreview?.GetTarget();
     }
+
 }

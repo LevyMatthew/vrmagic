@@ -11,11 +11,10 @@ public class StreamSpell : Spell
     private ParticleSystem[] particleSystems;
     private CharacterBody bodyReceivingRecoil;
 
-    public override void Start()
+    public override void Begin(SpellCaster caster, Transform target)
     {
-        base.Start();
+        base.Begin(caster, target);
         particleSystems = GetComponentsInChildren<ParticleSystem>();
-        //TODO: Find a way to inject recoil-receiving physics body (needs only implement AddForce)
         bodyReceivingRecoil = Player.instance.gameObject.GetComponent<CharacterBody>();
     }
 

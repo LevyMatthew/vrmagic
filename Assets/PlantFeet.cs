@@ -32,7 +32,7 @@ namespace Valve.VR.InteractionSystem
             bool rightHandPlant = plantFeetAction.GetStateDown(SteamVR_Input_Sources.RightHand); // && rightHandValid;
             bool anyHandPlant = plantFeetAction.GetStateDown(SteamVR_Input_Sources.Any);
 
-            if (anyHandPlant)
+            if (canPlant && anyHandPlant)
             {
                 CharacterBody playerBody = player.GetComponent<CharacterBody>();
                 playerBody.stickyFeet = !playerBody.stickyFeet;

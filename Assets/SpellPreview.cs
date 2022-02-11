@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,8 @@ public class SpellPreview : MonoBehaviour
     public float angle;
     public float minimumDistance;
     public LayerMask layerMask;
-    public InteractableType interacableType;
+    public InteractableType interactableType;
+    public GameObject indicator;
     
     public enum InteractableType
     {
@@ -16,43 +18,47 @@ public class SpellPreview : MonoBehaviour
         Flammable,
     }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    private Transform target;
 
     public void FixedUpdate()
     {
-        RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, Mathf.Infinity, layerMask))
         {
             SpellInteractable si = hit.transform.gameObject.GetComponent<SpellInteractable>();
-            if (CanInteract(si)) {
+            if (CanInteract(si))
+            {
                 Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.green);
+                target = hit.transform;
+                indicator.transform.position = transform.forward * hit.distance + transform.position;                
             }
             else
             {
                 Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.yellow);
+                target = null;
             }
         }
         else
         {
             Debug.DrawRay(transform.position, transform.forward * 1000, Color.white);
-            Debug.Log("Did not Hit");
+            target = null;
         }
+        indicator.SetActive(target != null);
     }
 
     public bool CanInteract(SpellInteractable si)
     {
         if (si == null)
             return false;
-        if (interacableType == InteractableType.Levitatable && si.isLevitatable)       
+        if (interactableType == InteractableType.Levitatable && si.isLevitatable)       
             return true;
-        if (interacableType == InteractableType.Flammable && si.isFlammable)
+        if (interactableType == InteractableType.Flammable && si.isFlammable)
             return true;
         return false;
+    }
+
+    public Transform GetTarget()
+    {
+        return target;
     }
 }
