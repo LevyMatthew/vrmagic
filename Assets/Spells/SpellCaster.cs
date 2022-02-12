@@ -42,6 +42,18 @@ public class SpellCaster : MonoBehaviour
         
         SteamVR_Behaviour_Pose behaviourPose;
 
+    public void Punch()
+    {
+        Vector3 velocity = GetComponent<KinematicTracker>().velocity;
+        foreach (SpellActionConfig sac in actionConfigs)
+        {
+            if (sac.spellInstance != null)
+            {
+                sac.spell.Punch(velocity);
+            }
+        }
+    }
+
     private void Awake()
         {
             //behaviourPose = GetComponent<SteamVR_Behaviour_Pose>();
