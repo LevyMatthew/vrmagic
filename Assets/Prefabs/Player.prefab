@@ -23,8 +23,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738042169349867988}
-  m_LocalRotation: {x: 0.24305868, y: 0.17371821, z: -0.1499416, w: 0.9424765}
-  m_LocalPosition: {x: 1.0034978, y: 0.30301008, z: -2.3569276}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: -0.0218, y: -0.0668, z: 0.0076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6502559185412638514}
@@ -210,8 +210,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3879665951247691749}
-  m_LocalRotation: {x: 0.31282267, y: -0.027946582, z: -0.019747948, w: 0.9491949}
-  m_LocalPosition: {x: -0.21636899, y: 0.4852533, z: -1.4771343}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0.0333, y: -0.0747, z: 0.0134}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6502559185412647620}
@@ -240,8 +240,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4123980748400460396}
-  m_LocalRotation: {x: 0.31282267, y: -0.027946582, z: -0.019747948, w: 0.9491949}
-  m_LocalPosition: {x: -0.21758816, y: 0.4500942, z: -1.4947398}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0.0333, y: -0.1069, z: -0.0092}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6502559185412647620}
@@ -270,8 +270,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5499976972109356340}
-  m_LocalRotation: {x: 0.34421137, y: 0.0038547814, z: 0.51369077, w: 0.7858916}
-  m_LocalPosition: {x: 1.0704871, y: 0.31765082, z: -2.5187092}
+  m_LocalRotation: {x: 0.32650566, y: -0.21263102, z: 0.6272114, w: 0.67437977}
+  m_LocalPosition: {x: 0.1, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6502559185412638514}
@@ -300,8 +300,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6143622465375789979}
-  m_LocalRotation: {x: 0.292961, y: 0.14359671, z: -0.6544498, w: 0.68209183}
-  m_LocalPosition: {x: -0.2937417, y: 0.52886534, z: -1.6174585}
+  m_LocalRotation: {x: 0.32650563, y: 0.212631, z: -0.6272114, w: 0.67437977}
+  m_LocalPosition: {x: -0.05, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6502559185412647620}
@@ -498,6 +498,7 @@ GameObject:
   - component: {fileID: 6502559185418368390}
   - component: {fileID: 6604732574728512984}
   - component: {fileID: 6502559185412829483}
+  - component: {fileID: 1669223074}
   m_Layer: 7
   m_Name: LeftHand
   m_TagString: Untagged
@@ -622,36 +623,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af2e9630d83ff84693b07da4d3f8b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellPreviewPrefab: {fileID: 0}
-  palmTransform: {fileID: 0}
-  indexFingerTipTransform: {fileID: 0}
-  middleFingerTipTransform: {fileID: 0}
+  spellPreviewPrefab: {fileID: 3784955993718930389, guid: 85ef28fcc3d4f004f99c7e93a04cbcb1,
+    type: 3}
+  palmTransform: {fileID: 6167207935887774892}
+  indexFingerTipTransform: {fileID: 891793243861007524}
+  middleFingerTipTransform: {fileID: 5158253492429454337}
   ulnarBorderTransform: {fileID: 0}
   actionConfigs:
   - action:
       actionPath: /actions/default/in/InteractUI
       needsReinit: 0
-    spellTemplatePrefab: {fileID: 1428410554714769860, guid: 8588df31120540149bc12533e7b7cff5,
+    spellTemplatePrefab: {fileID: 1428410554714769860, guid: ac3c53c9eea678e45884c2d8381e891b,
       type: 3}
-    attachmentPoint: 1
+    attachmentPoint: 3
     spellInstance: {fileID: 0}
     spell: {fileID: 0}
   - action:
       actionPath: /actions/default/in/Teleport
       needsReinit: 0
-    spellTemplatePrefab: {fileID: 1000014033464604, guid: 3c9067232bcfe2b49990a78433be7946,
+    spellTemplatePrefab: {fileID: 1428410554714769860, guid: e365f9fc71ca40246a91acaa82e50362,
       type: 3}
     attachmentPoint: 1
     spellInstance: {fileID: 0}
     spell: {fileID: 0}
   - action:
-      actionPath: /actions/default/in/Teleport
+      actionPath: /actions/default/in/GrabGrip
       needsReinit: 0
-    spellTemplatePrefab: {fileID: 1000014033464604, guid: 3c9067232bcfe2b49990a78433be7946,
+    spellTemplatePrefab: {fileID: 5159477548275747213, guid: 6979dd6c03e323e45936907bbc48ce10,
       type: 3}
     attachmentPoint: 1
     spellInstance: {fileID: 0}
     spell: {fileID: 0}
+--- !u!114 &1669223074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6502559185412829480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da44828599257364593d6af61cef6b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6502559185412829483}
+        m_TargetAssemblyTypeName: SpellCaster, Assembly-CSharp
+        m_MethodName: Punch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  framesPerMeasurement: 8
+  punchVelocityThreshold: 2
+  maxRecordSize: 10
+  debounceTime: 0.5
+  position: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  acceleration: {x: 0, y: 0, z: 0}
 --- !u!1 &6502559185412845850
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,6 +700,7 @@ GameObject:
   - component: {fileID: 6502559185418581272}
   - component: {fileID: 6604732575118358618}
   - component: {fileID: 6502559185412845853}
+  - component: {fileID: 1062578277}
   m_Layer: 7
   m_Name: RightHand
   m_TagString: Untagged
@@ -723,7 +760,7 @@ MonoBehaviour:
   hoverSphereRadius: 0.075
   hoverLayerMask:
     serializedVersion: 2
-    m_Bits: 63
+    m_Bits: 4294967295
   hoverUpdateInterval: 0.1
   useControllerHoverComponent: 1
   controllerHoverComponent: tip
@@ -788,10 +825,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af2e9630d83ff84693b07da4d3f8b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellPreviewPrefab: {fileID: 0}
-  palmTransform: {fileID: 0}
-  indexFingerTipTransform: {fileID: 0}
-  middleFingerTipTransform: {fileID: 0}
+  spellPreviewPrefab: {fileID: 3784955993718930389, guid: 85ef28fcc3d4f004f99c7e93a04cbcb1,
+    type: 3}
+  palmTransform: {fileID: 8779417935899518851}
+  indexFingerTipTransform: {fileID: 1058171578405364525}
+  middleFingerTipTransform: {fileID: 6850773967271127044}
   ulnarBorderTransform: {fileID: 0}
   actionConfigs:
   - action:
@@ -807,9 +845,51 @@ MonoBehaviour:
       needsReinit: 0
     spellTemplatePrefab: {fileID: 1428410554714769860, guid: e365f9fc71ca40246a91acaa82e50362,
       type: 3}
+    attachmentPoint: 3
+    spellInstance: {fileID: 0}
+    spell: {fileID: 0}
+  - action:
+      actionPath: /actions/default/in/GrabGrip
+      needsReinit: 0
+    spellTemplatePrefab: {fileID: 5159477548275747213, guid: 6979dd6c03e323e45936907bbc48ce10,
+      type: 3}
     attachmentPoint: 1
     spellInstance: {fileID: 0}
     spell: {fileID: 0}
+--- !u!114 &1062578277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6502559185412845850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da44828599257364593d6af61cef6b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6502559185412845853}
+        m_TargetAssemblyTypeName: SpellCaster, Assembly-CSharp
+        m_MethodName: Punch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  framesPerMeasurement: 8
+  punchVelocityThreshold: 2
+  maxRecordSize: 10
+  debounceTime: 0.5
+  position: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  acceleration: {x: 0, y: 0, z: 0}
 --- !u!1 &6502559185412851608
 GameObject:
   m_ObjectHideFlags: 0
@@ -3040,8 +3120,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6926493178690179745}
-  m_LocalRotation: {x: 0.24305868, y: 0.17371821, z: -0.1499416, w: 0.9424765}
-  m_LocalPosition: {x: 0.99048674, y: 0.26548108, z: -2.3674262}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: -0.0218, y: -0.1005, z: -0.0159}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6502559185412638514}
