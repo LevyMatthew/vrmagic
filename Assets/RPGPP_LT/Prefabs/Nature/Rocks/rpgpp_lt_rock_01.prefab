@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 23952086938741286}
   - component: {fileID: 1902245110}
   - component: {fileID: 1902245111}
-  - component: {fileID: 1902245109}
   m_Layer: 8
   m_Name: rpgpp_lt_rock_01
   m_TagString: Untagged
@@ -114,20 +113,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 305f277e1529222439b495a441de2f0b, type: 3}
---- !u!114 &1902245109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1689892608009186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b28e4d88c3c388843ab5ba4211e10e39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFlammable: 0
-  isLevitatable: 1
-  isBreakable: 0
-  isOnFire: 0
-  temperature: 25
