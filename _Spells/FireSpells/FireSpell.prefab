@@ -4709,7 +4709,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4540413944727526352}
   - component: {fileID: 4540413944727526364}
-  - component: {fileID: 160828318456494227}
   - component: {fileID: 5989264799426109446}
   - component: {fileID: 3229205976226173470}
   m_Layer: 8
@@ -4752,23 +4751,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
---- !u!114 &160828318456494227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4540413944727526365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd90f018f3ee0f040ac0cb80125189db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  elements: 01000000
-  destroyTime: 15
-  fixToHand: 1
-  velocityMultiplier: 10
-  punchSpawnTemplate: {fileID: 1428410554714769860, guid: 665f68191100af34797585d5d7a19955, type: 3}
 --- !u!135 &5989264799426109446
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4812,7 +4794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5262845843168467780, guid: f086599be391b4d409a06df7481fdbf5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.003
       objectReference: {fileID: 0}
     - target: {fileID: 5262845843168467780, guid: f086599be391b4d409a06df7481fdbf5, type: 3}
       propertyPath: m_LocalPosition.y
