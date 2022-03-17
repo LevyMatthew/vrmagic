@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using Valve.VR;
 
 public abstract class BooleanInputAction : MonoBehaviour
 {

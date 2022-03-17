@@ -5,14 +5,14 @@
 using UnityEngine;
 using System.Collections;
 
-namespace Valve.VR.InteractionSystem
-{
+//namespace Valve.VR.InteractionSystem
+//{
     //-----------------------------------------------------------------------------
     public class PlantFeet : MonoBehaviour
     {
         public bool showPlantAnimation = true;
 
-        public SteamVR_Action_Boolean plantFeetAction = SteamVR_Input.GetBooleanAction("/actions/motion/in/PlantFeet");
+        //public SteamVR_Action_Boolean plantFeetAction = SteamVR_Input.GetBooleanAction("/actions/motion/in/PlantFeet");
 
         private bool canPlant = true;
 
@@ -26,17 +26,17 @@ namespace Valve.VR.InteractionSystem
 
         private void Update()
         {
-            Player player = Player.instance;
+            //Player player = Player.instance;
 
-            bool leftHandPlant = plantFeetAction.GetStateDown(SteamVR_Input_Sources.LeftHand); //&& leftHandValid;
-            bool rightHandPlant = plantFeetAction.GetStateDown(SteamVR_Input_Sources.RightHand); // && rightHandValid;
-            bool anyHandPlant = plantFeetAction.GetStateDown(SteamVR_Input_Sources.Any);
-
+          //  bool leftHandPlant = plantFeetAction.GetStateDown(SteamVR_Input_Sources.LeftHand); //&& leftHandValid;
+//bool rightHandPlant = plantFeetAction.GetStateDown(SteamVR_Input_Sources.RightHand); // && rightHandValid;
+          //  bool anyHandPlant = plantFeetAction.GetStateDown(SteamVR_Input_Sources.Any);
+            bool anyHandPlant = false;
             if (canPlant && anyHandPlant)
             {
-                CharacterBody playerBody = player.GetComponent<CharacterBody>();
-                playerBody.stickyFeet = !playerBody.stickyFeet;
-                Debug.Log(playerBody.stickyFeet);
+             //   CharacterBody playerBody = player.GetComponent<CharacterBody>();
+              // playerBody.stickyFeet = !playerBody.stickyFeet;
+              //  Debug.Log(playerBody.stickyFeet);
             }
 
 
@@ -78,4 +78,4 @@ namespace Valve.VR.InteractionSystem
             }            */
         }
     }
-}
+//}

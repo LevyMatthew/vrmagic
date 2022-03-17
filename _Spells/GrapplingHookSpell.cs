@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Valve.VR.InteractionSystem;
 
 public class GrapplingHookSpell : Spell
 {
@@ -15,12 +14,12 @@ public class GrapplingHookSpell : Spell
     {
         base.Begin(caster, target);
         particleSystems = GetComponentsInChildren<ParticleSystem>();
-        bodyReceivingRecoil = Player.instance.gameObject.GetComponent<CharacterBody>();
+        //bodyReceivingRecoil = caster.body.gameObject.GetComponent<CharacterBody>();
     }
 
 	public override void Pull(Vector3 velocity)
     {
         Vector3 thrustVector = -velocity * thrustAcceleration;
-        bodyReceivingRecoil.AddForce(thrustVector, ForceMode.Impulse);
+        //bodyReceivingRecoil.AddForce(thrustVector, ForceMode.Impulse);
     }
 }

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Valve.VR.InteractionSystem;
 
 public class StreamSpell : Spell
 {
@@ -18,7 +17,7 @@ public class StreamSpell : Spell
     public override void Begin(SpellCaster caster, Transform target)
     {
         base.Begin(caster, target); 
-        bodyReceivingRecoil = Player.instance.GetComponent<CharacterBody>();
+      //  bodyReceivingRecoil = Player.instance.GetComponent<CharacterBody>();
         indicatorParticleSystem.Play();
         streamParticleSystem.Stop();
     }

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Valve.VR.InteractionSystem;
 
 public class ForceSpell : Spell
 {
@@ -13,7 +12,7 @@ public class ForceSpell : Spell
     public override void Begin(SpellCaster caster, Transform target)
     {
         base.Begin(caster, target);
-        bodyReceivingRecoil = Player.instance.GetComponent<CharacterBody>();
+        //bodyReceivingRecoil = caster.body.GetComponent<CharacterBody>();
         Hold();
         target = null;
     }
