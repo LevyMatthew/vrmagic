@@ -25,8 +25,7 @@ public class BallSpell : Spell
     }
 
     public override void Punch(Vector3 velocity)
-    {
-        Debug.Log(velocity.magnitude);
+    {       
         base.Punch(velocity);
         if (punchSpawnTemplate != null)
         {

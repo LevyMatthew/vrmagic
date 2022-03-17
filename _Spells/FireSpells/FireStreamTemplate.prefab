@@ -9464,8 +9464,8 @@ MonoBehaviour:
   elements: 01000000
   destroyTime: 5
   fixToHand: 1
-  thrustAcceleration: 12
-  minTakeoffPercent: 0.8
+  thrustAcceleration: 4
+  minTakeoffPercent: 1
   streamParticleSystem: {fileID: 1338564407675359202}
   indicatorParticleSystem: {fileID: 4015783547754965137}
   rotationOffset: {x: 0, y: 0, z: 0, w: 0}
@@ -9533,6 +9533,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1215872903027524836, guid: 1ed66cbfc9a311841a0eaca0c144aab9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215872903027524836, guid: 1ed66cbfc9a311841a0eaca0c144aab9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215872903027524836, guid: 1ed66cbfc9a311841a0eaca0c144aab9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215872903027524836, guid: 1ed66cbfc9a311841a0eaca0c144aab9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -9594,7 +9606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7155277920096084749, guid: 1ed66cbfc9a311841a0eaca0c144aab9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ed66cbfc9a311841a0eaca0c144aab9, type: 3}
