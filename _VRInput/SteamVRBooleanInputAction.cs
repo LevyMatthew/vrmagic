@@ -1,4 +1,3 @@
-using UnityEngine;
 using Valve.VR;
 
 public class SteamVRBooleanInputAction : BooleanInputAction
@@ -8,12 +7,12 @@ public class SteamVRBooleanInputAction : BooleanInputAction
 
     public override bool FallingEdge()
     {
-        return steamVRInputAction.GetStateDown(inputSource);
+        return steamVRInputAction.GetStateUp(inputSource);
     }
 
     public override bool RisingEdge()
     {
-        return steamVRInputAction.GetStateUp(inputSource);
+        return steamVRInputAction.GetStateDown(inputSource);
     }
 
     public override bool GetState()

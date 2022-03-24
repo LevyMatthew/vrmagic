@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,10 +7,12 @@ public class KinematicTracker : MonoBehaviour
 {
     public UnityEvent punchEvent;
     public UnityEvent pullEvent;
+    public UnityEvent[] directionalPunchEvents = new UnityEvent[6];
 
     public int framesPerMeasurement = 1;
 
     public Transform body;
+    public Transform origin;
 
     public float punchVelocityThreshold = 2f;
     public float pullVelocityThreshold = 2f;
@@ -38,6 +39,10 @@ public class KinematicTracker : MonoBehaviour
     public Vector3 position;
     public Vector3 velocity;
     public Vector3 acceleration;
+
+    public Vector3[] linearDirections = {
+        Vector3.right, Vector3.up, Vector3.forward, Vector3.left, Vector3.down, Vector3.back
+    };
 
     private int frameCounter;
     private float lastPunchEventTime;
@@ -70,7 +75,9 @@ public class KinematicTracker : MonoBehaviour
             MeasurePosition();
             MeasureVelocity();
             MeasureAcceleration();
+            
             TickPunchEvent();
+            TickPullEvent();
         }
         frameCounter += 1;
     }
@@ -85,11 +92,16 @@ public class KinematicTracker : MonoBehaviour
         if (localVelocity.sqrMagnitude <= punchVelocityThreshold * punchVelocityThreshold)
             return;
 
+        for (int i = 0; i < linearDirections.Length; i++) {  
+            if (Vector3.Dot(velocity, body.TransformDirection(linearDirections[i])) > (1.0f - punchAngularSensitivity))
+                    directionalPunchEvents[i].Invoke();
+        }      
+        
         if (Vector3.Dot(velocity, body.forward) < punchAngularSensitivity)
             return;
 
         punchEvent.Invoke();
-        lastPunchEventTime = Time.time;
+        lastPunchEventTime = Time.time;        
     }
 
     private void TickPullEvent()
@@ -210,7 +222,10 @@ public class KinematicTracker : MonoBehaviour
 
     private void MeasureLocalPosition()
     {
-        localPosition = transform.localPosition;
+        if (origin != null)
+            localPosition = transform.position - origin.position;
+        else
+            localPosition = transform.localPosition;
         previousLocalPositions.Insert(0, localPosition);
         while (previousLocalPositions.Count > maxRecordSize)
         {
