@@ -3,12 +3,11 @@
 
 
 using UnityEngine;
-using System.Collections;
 
 //namespace Valve.VR.InteractionSystem
 //{
-    //-----------------------------------------------------------------------------
-    public class PlantFeet : MonoBehaviour
+//-----------------------------------------------------------------------------
+public class PlantFeet : MonoBehaviour
     {
         public bool showPlantAnimation = true;
 
