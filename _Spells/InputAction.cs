@@ -1,7 +1,7 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public abstract class BooleanInputAction : MonoBehaviour
+[CreateAssetMenu]
+public abstract class BooleanInputAction : ScriptableObject
 {
     public abstract bool GetState();
     public abstract bool RisingEdge();

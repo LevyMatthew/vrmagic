@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(KinematicTracker))]
 public class SpellCaster : MonoBehaviour
 {
-    public Rigidbody recoilRecipient;
+    public CharacterBody recoilRecipient;
     public GameObject spellPreviewPrefab;
     private SpellPreview spellPreview;
     private KinematicTracker kinematicTracker;
@@ -32,6 +32,12 @@ public class SpellCaster : MonoBehaviour
         public bool dropOnSpawn = false;
     }
 
+    [System.Serializable]
+    public class OnAwakeSpawner : SpellSpawner
+    {
+        public bool dropOnSpawn = false;
+    }
+
     public enum AttachmentPoint // your custom enumeration
     {
         Hand,
@@ -55,7 +61,11 @@ public class SpellCaster : MonoBehaviour
     [SerializeField] public Transform ulnarBorderTransform;
 
     [SerializeField] public List<BooleanActionSpellSpawner> buttonSpellConfigs;
+    //separate momentary and toggle button configs
     [SerializeField] public List<VelocityActionSpellSpawner> velocitySpellConfigs;
+    [SerializeField] public List<OnAwakeSpawner> onAwakeSpellConfigs;
+
+    internal object body;
 
     private void Awake()
     {
@@ -73,7 +83,8 @@ public class SpellCaster : MonoBehaviour
             if (sac.spellTemplatePrefab == null)
                 throw new MissingReferenceException("Spell configuration missing reference to spell template");
         }
-
+        foreach (OnAwakeSpawner oas in onAwakeSpellConfigs)
+            TrySpawn(oas, transform);
     }
 
     private Vector3 GetVelocity()
@@ -160,30 +171,42 @@ public class SpellCaster : MonoBehaviour
 
     private void DoBooleanActionSpawns()
     {
-        foreach (BooleanActionSpellSpawner sac in buttonSpellConfigs)
+        foreach (BooleanActionSpellSpawner spawner in buttonSpellConfigs)
         {
-            if (sac.action == null)
+            if (spawner.action == null)
                 continue;
 
-            if (sac.spellInstance == null && sac.action.GetState())
+            if (spawner.action.GetState() && spawner.spellInstance != null)
             {
-                Transform target = transform;
-
-                if (target != null)
-                {
-                    sac.spellInstance = GameObject.Instantiate(sac.spellTemplatePrefab, target.position, target.rotation, null);
-                    sac.spell = sac.spellInstance.GetComponent<Spell>();
-                    if (sac.spell != null)
-                        sac.spell.Begin(this, target);
-                }
-
+                TrySpawn(spawner, transform);
             }
-            else if (sac.spellInstance != null && !sac.action.GetState())
+            else
             {
-                sac.spell.Release(GetVelocity());
-                sac.spellInstance = null;
+               TryDespawn(spawner);
             }
         }
+    }
+
+    private void TrySpawn(SpellSpawner spawner, Transform target)
+    {
+         if (target != null)
+                {
+                    if (spawner.spellInstance != null){
+                        spawner.spellInstance.GetComponent<Spell>()?.Release(GetVelocity());
+                    }
+                    spawner.spellInstance = GameObject.Instantiate(spawner.spellTemplatePrefab, target.position, target.rotation, null);
+                    spawner.spell = spawner.spellInstance.GetComponent<Spell>();
+                    if (spawner.spell != null) spawner.spell.Begin(this, target);
+                }
+    }
+
+    private void TryDespawn(SpellSpawner spawner)
+    {
+         if (spawner.spellInstance != null){
+                    spawner.spell?.Release(GetVelocity());
+                    spawner.spellInstance = null;
+                    spawner.spell = null;
+                }
     }
 
     private void FixedUpdate()
