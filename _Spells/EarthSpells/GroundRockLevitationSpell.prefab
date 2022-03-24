@@ -167,8 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8c0a845cd79b149aa50c750c6ff4f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elements: 
+  elements: 03000000
   destroyTime: 0
-  force: {x: 0, y: 0, z: 0}
-  forceMode: 0
   fixToHand: 1
